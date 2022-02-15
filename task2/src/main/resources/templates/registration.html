@@ -8,18 +8,17 @@
 </head>
 <body>
     <div class="container m-5">
-        <h1 class="display-6">Új felhasználó regisztrációja</h1>
-        <p class="fw-lighter">* Kötelezően kitöltendő mező</p>
+        <h1 class="display-6">Regisztráció</h1>
         <form action="#" th:action="@{/}" th:object="${registrationForm}" method="post">
             <div class="row mb-3">
                 <div class="col-6">
                     <div class="row">
                         <div class="col-2">
-                            <label for="emailInput" class="col-form-label">* E-mail</label>
+                            <label for="emailInput" class="col-form-label">E-mail</label>
                         </div>
                         <div class="col-8">
                             <input type="text" id="emailInput" class="form-control" th:field="*{email}" aria-describedby="emailHelp validationEmailFeedback" th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''" required/>
-                            <div id="emailHelp" class="form-text">Felhasználónévként adjon meg egy érvényes e-mail címet. Lehetőleg munkahelyi e-mail címét használja.</div>
+                            <div id="emailHelp" class="form-text">Adjon meg egy legalább 3 karater hosszú érvényes e-mail címet.</div>
                             <div id="validationEmailFeedback" class="invalid-feedback">
                                 Helytelen e-mail cím!
                             </div>
@@ -31,17 +30,23 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-1">
-                            <label for="passwordInput" class="col-form-label">* Jelszó</label>
+                            <label for="passwordInput" class="col-form-label">Jelszó</label>
                         </div>
                         <div class="col-4">
                             <input type="password" id="passwordInput" class="form-control" th:field="*{password}" aria-describedby="passwordHelp validationPasswordFeedback" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''" required/>
-                            <div id="passwordHelp" class="form-text">A jelszavaknak legalább 6 karakterből kell állniuk, továbbá tartalmaznia kell nagy- és kisbetűt, valamint legalább egy számot</div>
+                            <div id="passwordHelp" class="form-text">A jelszavaknak legalább 6 karakterből kell állniuk, továbbá tartalmaznia kell nagy- és kisbetűt</div>
                             <div id="validationPasswordFeedback" class="invalid-feedback">
                                 Nem megfelelő jelszó!
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="row">
                         <div class="col-2">
-                            <label for="passwordAgainInput" class="col-form-label">* Jelszó megerősítése</label>
+                            <label for="passwordAgainInput" class="col-form-label">Jelszó megerősítése</label>
                         </div>
                         <div class="col-4">
                             <input type="password" id="passwordAgainInput" class="form-control" th:field="*{passwordAgain}" aria-describedby="validationPasswordAgainFeedback" th:classappend="${#fields.hasErrors('passwordAgain')} ? 'is-invalid' : ''" required/>
