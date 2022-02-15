@@ -1,24 +1,12 @@
 package hu.domonkosaron.ht.task2.models;
 
-import hu.domonkosaron.ht.task2.domain.validation.FieldsValueMatch;
 import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
-import java.time.LocalDateTime;
-
-@FieldsValueMatch.List(
-        @FieldsValueMatch(
-                field = "password",
-                fieldMatch = "passwordAgain",
-                message = "Passwords don't match!"
-        )
-)
 
 @Entity
 @NamedQuery(name = "RegistrationForm.findByEmailAddress",
@@ -34,8 +22,6 @@ public class RegistrationForm {
 
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{6,}$")
     private String password;
-
-    private String passwordAgain;
 
     public RegistrationForm() {}
 
@@ -59,13 +45,5 @@ public class RegistrationForm {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPasswordAgain() {
-        return passwordAgain;
-    }
-
-    public void setPasswordAgain(String passwordAgain) {
-        this.passwordAgain = passwordAgain;
     }
 }
