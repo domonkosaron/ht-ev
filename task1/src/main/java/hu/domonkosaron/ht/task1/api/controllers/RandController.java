@@ -20,7 +20,7 @@ public class RandController {
     @GetMapping("/rand")
     public String rand(@RequestParam(value = "max", defaultValue = "11") String max){
         try {
-            return service.rand(Integer.parseInt(max));
+            return service.rand(Integer.parseInt(max + 1));
         } catch (final NumberFormatException nfe) {
             return "Invalid number: " + max + "!";
         }
